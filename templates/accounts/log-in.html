@@ -1,0 +1,31 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'styles/accounts/log-in.css' %}">
+    <div class="content">
+        <div class="header">
+            <h1>Вход</h1>
+        </div>
+        <form class="log-in-form" action="{% url 'log in' %}" method="post">
+            <div class="input-box">
+                {{ form.username }}
+                <label for="">{{ form.username.label }}</label>
+            </div>
+            <div class="input-box">
+                {{ form.password }}
+                <label for=""> {{ form.password.label }}</label>
+            </div>
+            {% if form.errors %}
+                <div class="error">
+
+                    {{ form.non_field_errors }}
+
+                </div>
+            {% endif %}
+            <input name="next" type="hidden" value="{{ next }}">
+
+            <button>Вход</button>
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

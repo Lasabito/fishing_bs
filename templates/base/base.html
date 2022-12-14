@@ -1,0 +1,23 @@
+{% load static %}
+<!doctype html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script type="text/javascript" src="{% static 'js/lightbox-plus-jquery.min.js' %}"></script>
+    <script src="https://kit.fontawesome.com/73cf3f5f3e.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="{% static 'styles/base.css' %}">
+    <title>{{ title }}</title>
+</head>
+<body>
+    {% include 'base/includes/nav.html' %}
+    <script src="{% static 'js/nav_script.js' %}"></script>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    {% include 'base/includes/footer.html' %}
+</body>
+</html>

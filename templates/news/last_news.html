@@ -1,0 +1,206 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'styles/mains/last_news.css' %}">
+    <div class="content">
+        <div class="sort">
+            <div class="add-button">
+                <a href="{% url 'create news' %}">
+                    <i class="fa-solid fa-circle-plus"></i> Добави
+                </a>
+            </div>
+            <div class="filter">
+                <div class="header">
+                    <h2>Филтрация</h2>
+                </div>
+
+                <form class="filter-form" action="{% url 'news' %}" method="get">
+                    <button>Филтрирай</button>
+                    <div class="selection">
+                        <h4>Време на <br> добавяне:</h4>
+                        <div class="input-box">
+                            <div class="choice">
+                                <input value="soonest" type="radio" name="time" id="time">
+                                <label for="time">Най-скорошни</label>
+                            </div>
+                            <div class="choice">
+                                <input value="latest" type="radio" name="time" id="time">
+                                <label for="time">Най-късни</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="selection">
+                        <h4>Вид риба:</h4>
+                        <div class="input-box">
+                            <div class="choice">
+                                <input value="Сафрид" type="radio" name="fish_type" id="safrid">
+                                <label for="safrid">Сафрид ({{ Сафрид }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Чернокоп" type="radio" name="fish_type" id="chernokop">
+                                <label for="chernokop">Чернокоп ({{ Чернокоп }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Паламуд" type="radio" name="fish_type" id="palamud">
+                                <label for="palamud">Паламуд ({{ Паламуд }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Лефер" type="radio" name="fish_type" id="lefer">
+                                <label for="lefer">Лефер ({{ Лефер }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Попче" type="radio" name="fish_type" id="popche">
+                                <label for="popche">Попче ({{ Попче }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Зарган" type="radio" name="fish_type" id="zargan">
+                                <label for="zargan">Зарган ({{ Зарган }})</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="selection">
+                        <h4>Локация:</h4>
+                        <div class="input-box">
+                            <div class="choice">
+                                <input value="Емине" type="radio" name="location" id="emine">
+                                <label for="emine">Емине ({{ Eмине }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Кокетрайс" type="radio" name="location" id="koketrais">
+                                <label for="koketrais">Кокетрайс ({{ Кокетрайс }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Елените" type="radio" name="location" id="elenite">
+                                <label for="elenite">Елените ({{ Елените }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Мегалката" type="radio" name="location" id="megalkata">
+                                <label for="ravda">Мегалката ({{ Мегалката }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Поморие" type="radio" name="location" id="pomorie">
+                                <label for="pomorie">Поморие ({{ Поморие }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Ставрова банка" type="radio" name="location" id="stavrova-banka">
+                                <label for="stavrova-banka">Ставрова банка ({{ Ставрова }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Канала" type="radio" name="location" id="kanala">
+                                <label for="kanala">Канала ({{ Чернокоп }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Чукалята" type="radio" name="location" id="chukalyata">
+                                <label for="chukalyata">Чукалята ({{ Чукалята }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Атия" type="radio" name="location" id="atiya">
+                                <label for="atiya">Атия ({{ Атия }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Таласакра" type="radio" name="location" id="talasakra">
+                                <label for="talasakra">Таласакра ({{ Таласакра }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Созопол" type="radio" name="location" id="sozopol">
+                                <label for="sozopol">Созопол ({{ Созопол }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Дюни" type="radio" name="location" id="diuni">
+                                <label for="diuni">Дюни ({{ Дюни }})</label>
+                            </div>
+                            <div class="choice">
+                                <input value="Маслен нос" type="radio" name="location" id="maslen-nos">
+                                <label for="maslen-nos">Маслен нос ({{ Маслен }})</label>
+                            </div>
+                        </div>
+                    </div>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>
+        <div class="news">
+            {% if news %}
+                {% for new in page_obj %}
+                    <div class="new">
+                        <div class="header">
+                            <a href="{% url 'profile details' pk=new.from_user.pk %}">
+                                {% if new.from_user.profile_picture %}
+                                    <img src="{{ new.from_user.profile_picture.url }}" alt="profile-image">
+                                {% else %}
+                                    <img src="{% static 'images/profile/default-profile-image.png' %}"
+                                         alt="profile-image">
+                                {% endif %}
+                            </a>
+                            <div class="next-to-the-photo">
+                                <a href="{% url 'profile details' pk=new.from_user.pk %}">
+                                    <h2 class="username">{{ new.from_user.username }}</h2>
+                                </a>
+                                <h5 class="date-time">{{ new.created_on }}</h5>
+                            </div>
+                            {% if new.from_user.user == request.user or request.user.is_staff %}
+                                <div class="buttons">
+                                    <a href="{% url 'edit news' pk=new.pk %}"><i
+                                            class="fa-regular fa-pen-to-square"></i>
+                                        Редактирай
+                                    </a>
+                                    <a class="delete" href="{% url 'delete news' pk=new.pk %}"><i
+                                            class="fa-solid fa-trash"></i>
+                                        Изтрий
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="information">
+                            <div class="different-from-photo">
+                                <h3><span class="info">Вид риба:</span> {{ new.fish_type }}</h3>
+
+                                <h3>
+                                    <span class="info">Локация:</span> {{ new.location }}
+                                    <a href="{% url 'fishing areas' %}">
+                                        <i title="Виж повече за тази локация" class="fa-solid fa-question"></i>
+                                    </a>
+                                </h3>
+
+                                <h3><span class="info">Интензивност на риболова:</span> {{ new.intensity }}</h3>
+                                <h3><span class="info">Вид на риболуване:</span> {{ new.type_of_catching }}</h3>
+                                <h3><span class="info">Коментар:</span>
+                                    {% if new.comment %}
+                                        {{ new.comment }}
+                                    {% endif %}
+                                </h3>
+                            </div>
+                            <div class="photo">
+                                <h4>Снимка:</h4>
+                                {% if new.photo %}
+                                    <img src="{{ new.photo.url }}" alt="fish photo">
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="paginating">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1"><i class="fa-solid fa-backward-fast"></i></a>
+                        <a href="?page={{ page_obj.previous_page_number }}"><i
+                                class="fa-solid fa-backward-step"></i></a>
+                    {% endif %}
+
+                    Страница {{ page_obj.number }} от {{ page_obj.paginator.num_pages }}.
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}"><i class="fa-solid fa-forward-step"></i></a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}"><i class="fa-solid fa-forward-last"></i></a>
+                    {% endif %}
+                </div>
+
+
+            {% else %}
+                <h1 class="no-news">
+                    Няма добавени новини.
+                </h1>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

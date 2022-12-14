@@ -1,0 +1,8 @@
+.footer-container {
+    height: 150px;
+    background: white;
+    margin-top: auto;
+    -webkit-box-shadow: 0px 70px 156px -26px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 70px 156px -26px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 70px 156px -26px rgba(0, 0, 0, 0.75);
+}

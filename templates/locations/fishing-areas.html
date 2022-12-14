@@ -1,0 +1,97 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content">
+        <link rel="stylesheet" href="{% static 'styles/mains/fishing-areas.css' %}">
+        <h1 class="header">Риболовни райони</h1>
+        <div class="explain">
+            <h4>Риболовни райони в бургаския залив</h4>
+            <img src="{% static 'images/fishing_areas/titled-fishing-areas.png' %}" alt="entitled-fishing-areas">
+        </div>
+
+        <div class="search">
+            <h2>За пълна прогноза за някой от тези райони:</h2>
+            <form action="{% url 'fishing areas' %}" method="post" class="location-form">
+                <label for="id_location" class="location-label">Изберете локация от тук:</label>
+                {{ form.location }}
+                <button>Избери</button>
+                {% csrf_token %}
+            </form>
+            <div class="choose-from-photos">
+                <div class="section-header">
+                    Или натиснете някое от цветните полета, отговарящи на съответната зона от легендата
+                </div>
+                <div class="image-and-legend">
+                    <img usemap="#image-map" src="{% static 'images/fishing_areas/fishing-areas.png' %}"
+                         alt="fishing areas">
+                    <map name="image-map">
+                        <area target="" alt="koketrais" title="koketrais"
+                              href="{% url 'area forecast' area='koketrais' %}"
+                              coords="580,85,590,82,602,84,608,94,606,103,598,108,586,109,578,102,575,94" shape="poly">
+                        <area target="" alt="emine" title="emine" href="{% url 'area forecast' area='emine' %}"
+                              coords="555,40,567,42,575,43,581,37,578,28,583,22,578,1,595,1,602,8,607,21,614,37,614,51,610,59,605,67,594,69,586,71,574,69,561,61,555,52"
+                              shape="poly">
+                        <area target="" alt="elenite" title="elenite" href="{% url 'area forecast' area='elenite' %}"
+                              coords="490,56,529,55,530,80,490,80"
+                              shape="poly">
+                        <area target="" alt="megalkata" title="megalkata"
+                              href="{% url 'area forecast' area='megalkata' %}"
+                              coords="375,70,393,72,408,76,422,84,438,95,442,109,446,127,446,143,438,152,429,160,418,164,410,164,389,164,360,163,366,153,371,137,380,134,389,134,398,129,406,116,402,100,390,96,376,92"
+                              shape="poly">
+                        <area target="" alt="ravda" title="ravda" href="{% url 'area forecast' area='ravda' %}"
+                              coords="334,160,347,168,360,180,367,189,369,205,366,219,352,225,330,228,314,227,301,228,286,227,279,222,277,208,278,195,282,185,285,172,294,171,302,166,314,169,322,171"
+                              shape="poly">
+                        <area target="" alt="pomorie" title="pomorie" href="{% url 'area forecast' area='pomorie' %}"
+                              coords="298,255,311,255,328,259,346,261,358,268,369,282,372,301,370,315,359,319,346,318,331,316,315,314,303,309,295,301,299,289,301,278,298,268,294,263"
+                              shape="poly">
+                        <area target="" alt="stavrova-banka" title="stavrova-banka"
+                              href="{% url 'area forecast' area='stavrova-banka' %}"
+                              coords="184,310,194,305,203,298,210,290,220,291,227,296,234,295,242,285,251,287,260,291,266,296,270,304,267,309,259,317,250,322,235,323,219,322,206,320,194,316"
+                              shape="poly">
+                        <area target="" alt="kanala" title="kanala" href="{% url 'area forecast' area='kanala' %}"
+                              coords="289,337,303,332,316,327,328,345,340,372,350,390,359,411,346,421,334,428,319,404,301,366,294,353"
+                              shape="poly">
+                        <area target="" alt="chukalyata" title="chukalyata"
+                              href="{% url 'area forecast' area='chukalyata' %}"
+                              coords="166,425,180,422,190,428,192,438,184,447,172,450,162,441" shape="poly">
+                        <area target="" alt="atiya" title="atiya" href="{% url 'area forecast' area='atiya' %}"
+                              coords="205,448,198,446,198,430,202,418,213,414,221,416,228,420,233,426,234,434,236,447,234,454,226,448,218,442,214,433,209,440"
+                              shape="poly">
+                        <area target="" alt="talasakra" title="talasakra"
+                              href="{% url 'area forecast' area='talasakra' %}"
+                              coords="265,437,266,427,274,425,286,424,296,428,307,435,314,439,322,444,326,454,328,466,326,475,318,481,310,481,302,484,295,474,290,468,293,452,285,452,276,454,271,446"
+                              shape="poly">
+                        <area target="" alt="sozopol" title="sozopol" href="{% url 'area forecast' area='sozopol' %}"
+                              coords="342,480,349,475,354,470,369,469,381,471,393,474,404,476,417,487,423,496,430,513,427,531,422,543,412,554,399,562,390,564,380,557,372,548,375,541,382,541,390,532,395,513,380,507,360,496,360,488,352,484"
+                              shape="poly">
+                        <area target="" alt="duini" title="duini" href="{% url 'area forecast' area='duini' %}"
+                              coords="420,612,407,600,406,585,413,575,424,570,437,568,449,573,456,581,457,591,454,604,446,612,436,614,428,614"
+                              shape="poly">
+                        <area target="" alt="maslen-nos" title="maslen-nos"
+                              href="{% url 'area forecast' area='maslen-nos' %}"
+                              coords="459,621,465,611,473,602,485,595,498,591,511,595,519,601,526,613,530,626,534,641,536,655,535,669,537,679,536,691,532,703,523,712,514,720,507,731,502,734,441,733,440,722,448,708,460,697,470,689,475,675,466,667,462,657,462,647,466,639,466,630"
+                              shape="poly">
+                    </map>
+                    <div class="legend">
+                        <span class="red"><i class="fa-solid fa-circle"></i> Eмине</span>
+                        <span class="blue"><i class="fa-solid fa-circle"></i> Кокетрайс</span>
+                        <span class="green"><i class="fa-solid fa-circle"></i> Елените</span>
+                        <span class="light-blue"><i class="fa-solid fa-circle"></i> Мегалката</span>
+                        <span class="pink"><i class="fa-solid fa-circle"></i> Равда</span>
+                        <span class="yellow"><i class="fa-solid fa-circle"></i> Поморие</span>
+                        <span class="grey"><i class="fa-solid fa-circle"></i> Ставрова банка</span>
+                        <span class="black"><i class="fa-solid fa-circle"></i> Канала</span>
+                        <span class="orange"><i class="fa-solid fa-circle"></i> Чукалята</span>
+                        <span class="purple"><i class="fa-solid fa-circle"></i> Атия</span>
+                        <span class="light-purple"><i class="fa-solid fa-circle"></i> Таласакра</span>
+                        <span class="dark-red"><i class="fa-solid fa-circle"></i> Созопол</span>
+                        <span class="dark-orange"><i class="fa-solid fa-circle"></i> Дюни</span>
+                        <span class="lime"><i class="fa-solid fa-circle"></i> Маслен нос</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

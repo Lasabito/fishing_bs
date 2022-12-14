@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %}
+{% load custom_filters %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'styles/accounts/register.css' %}">
+    <div class="content">
+        <div class="header">
+            <h1>Регистрация</h1>
+        </div>
+        <form class="register-form" action="{% url 'register' %}" method="post">
+            {{ form.email|placeholder:'Email' }}
+            {{ form.errors.email }}
+            {{ form.username|placeholder:'Потребителско име' }}
+            {{ form.errors.username }}
+            {{ form.password1|placeholder:'Парола' }}
+            {{ form.password1.errors }}
+            {{ form.password2|placeholder:'Парола (отново)' }}
+            {{ form.password2.errors }}
+            <button type="submit">Регистриране</button>
+            {% csrf_token %}
+        </form>
+    </div>
+    <link rel="stylesheet" href="{% static 'styles/accounts/register.css' %}">
+{% endblock %}

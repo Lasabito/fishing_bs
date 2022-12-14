@@ -1,0 +1,22 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'styles/accounts/delete.css' %}">
+    <div class="content">
+        <div class="header">
+            Изтриване на пост
+        </div>
+        <div class="question">
+            Сигурни ли сте, че искате да изтриете този пост?
+        </div>
+        <div class="buttons">
+            <form action="{% url 'delete news' pk=object.pk %}" method="post">
+                {{ form }}
+                <button type="submit" class="submit">Изтрий</button>
+                {% csrf_token %}
+            </form>
+            <button onclick="history.back()">Назад</button>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'styles/news/update.css' %}">
+    <div class="content">
+        <h1 class="header">Редактиране на предупреждение</h1>
+        <form class="update-news-form" action="{% url 'update warning' pk=object.pk %}" method="post"
+              enctype="multipart/form-data">
+            {% for field in form %}
+                <div class="input-box">
+                    <label for="">{{ field.label }}</label>
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+
+            <button>Редактирай</button>
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

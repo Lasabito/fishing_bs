@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'styles/mains/create_news.css' %}">
+    <div class="content">
+        <h1 class="header">Създаване на предупреждение</h1>
+        <form class="create_news_form" action="{% url 'create warning' %}" method="post">
+            {% for field in form %}
+                <div class="input-box">
+                    <label for="">{{ field.label }}</label>
+                    {{ field }}
+                    {{ field.errors }}
+                </div>
+            {% endfor %}
+
+            <button>Добави</button>
+            {% csrf_token %}
+        </form>
+    </div>
+{% endblock %}

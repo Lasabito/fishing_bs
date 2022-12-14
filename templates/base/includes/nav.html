@@ -1,0 +1,28 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/includes/nav.css' %}">
+<nav>
+    <ul class="menu">
+        <li class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'images/logo/logo.png' %}" alt="logo">
+                <span class="logo-text">SHING</span>
+                <span class="logo-small-text">BurgasBay</span>
+            </a>
+        </li>
+        <li class="item">
+            <a href="{% url 'city forecast' %}" tabindex="0"><i class="fa-solid fa-cloud"></i> Прогноза</a>
+        </li>
+        <li class="item">
+            <a tabindex="0" href="{% url 'news' %}"><i class="fa fa-newspaper-o" aria-hidden="true"></i> Последни новини</a>
+        </li>
+        <li class="item"><a href="{% url 'fishing areas' %}"><i class="fa-solid fa-fish-fins"></i> Риболовни райони</a></li>
+        <li class="item"><a href="{% url 'warnings' %}"><i class="fa-solid fa-triangle-exclamation"></i> Предупреждения</a></li>
+        {% if request.user.is_authenticated %}
+            <li class="item button"><a href="{% url 'profile details' pk=request.user.pk %}"><i class="fa-solid fa-user"></i> Профил</a></li>
+        {% else %}
+            <li class="item button"><a href="{% url 'log in' %}"><i class="fa-solid fa-right-to-bracket"></i> Вход</a></li>
+            <li class="item button secondary"><a href="{% url 'register' %}"><i class="fa-solid fa-user-plus"></i> Регистрация</a></li>
+        {% endif %}
+        <li class="toggle"><a href="#"><i class="fa fa-bars" aria-hidden="true"></i></a></li>
+    </ul>
+</nav>

@@ -1,0 +1,19 @@
+main{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: max-content;
+    gap: 10px;
+    text-align: center;
+    padding: 0 10px;
+}
+
+.content h1{
+    font-size: 40px;
+}
+
+.content h2{
+    font-size: 33px;
+}

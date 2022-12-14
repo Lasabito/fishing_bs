@@ -1,0 +1,62 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="content">
+        <link rel="stylesheet" href="{% static 'styles/mains/weather-forecast.css' %}">
+
+        <h1 class="header">Прогноза за времето в момента</h1>
+
+        <form action="{% url 'city forecast' %}" method="get" class="town-form">
+            <label for="id_town" class="town-label">Изберете град:</label>
+            {{ form.town }}
+            <button>Избери</button>
+            {% csrf_token %}
+        </form>
+
+        {% if is_weather %}
+            <div class="weather-info">
+                <div class="location">
+                    <h1>{{ location }}</h1>
+                    <h3>България</h3>
+                </div>
+                <div class="weather-icon-and-degrees">
+                    <div class="icon">
+                        <img src="{% static icon|add:'/' %}" alt="weather icon">
+                    </div>
+                    <div class="degrees">
+                        {{ temperature }}<span class="celsius">°C</span>
+                    </div>
+                </div>
+                <div class="condition">
+                    {{ condition }}
+                </div>
+                <div class="feels-like">
+                    Усеща се като {{ feels_like }}<span class="celsius">°C</span>
+                </div>
+                <div class="additional">
+                    <div class="wind">
+                        <i class="fa-solid fa-wind"></i>
+                        <h4>Скорост: {{ wind_speed }} м/с</h4>
+                        <h4>Посока: {{ wind_direction }}</h4>
+                    </div>
+                    <div class="humidity">
+                        <i class="fa-solid fa-droplet"></i>
+                        <h4>{{ humidity }}</h4>
+                    </div>
+                    <div class="sunrise">
+                        <img src="{% static 'images/weather/sunrise.png' %}" alt="sunrise icon">
+                        <h4>{{ sunrise }}</h4>
+                    </div>
+                    <div class="sunset">
+                        <img src="{% static 'images/weather/sunset.png' %}" alt="sunrise icon">
+                        <h4>{{ sunset }}</h4>
+                    </div>
+                    <div class="visibility">
+                        <i class="fa-solid fa-eye"></i>
+                        <h4>{{ visibility }}м</h4>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

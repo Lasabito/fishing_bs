@@ -1,0 +1,86 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'styles/weather_warnings/all_warnings.css' %}">
+    <div class="content">
+        {% if request.user.is_staff %}
+            <div class="add-button">
+                <a href="{% url 'create warning' %}"><i class="fa-solid fa-circle-plus"></i> Добави</a>
+            </div>
+        {% endif %}
+        <div class="news">
+            {% if warnings %}
+                {% for new in page_obj %}
+                    <div class="new">
+                        <div class="header">
+                            <a href="{% url 'profile details' pk=new.from_user.pk %}">
+                                {% if new.from_user.profile_picture %}
+                                    <img src="{{ new.from_user.profile_picture.url }}" alt="profile-image">
+                                {% else %}
+                                    <img src="{% static 'images/profile/default-profile-image.png' %}"
+                                         alt="profile-image">
+                                {% endif %}
+                            </a>
+                            <div class="next-to-the-photo">
+                                <a href="{% url 'profile details' pk=new.from_user.pk %}">
+                                    <h2 class="username">{{ new.from_user.username }}</h2>
+                                </a>
+                                <h5 class="date-time">{{ new.created_on }}</h5>
+                            </div>
+                            {% if request.user.is_staff %}
+                                <div class="buttons">
+                                    <a href="{% url 'update warning' pk=new.pk %}"><i
+                                            class="fa-regular fa-pen-to-square"></i>
+                                        Редактирай
+                                    </a>
+                                    <a class="delete" href="{% url 'delete warning' pk=new.pk %}"><i
+                                            class="fa-solid fa-trash"></i>
+                                        Изтрий
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="information">
+                            <div class="different-from-photo">
+                                <h3>
+                                    <span class="info">Локация:</span> {{ new.location }}
+                                </h3>
+
+                                <h3>
+                                    <span class="info">Вид предупреждение:</span> {{ new.warning_type }}
+                                </h3>
+
+                                <h3><span class="info">Коментар:</span>
+                                    {% if new.comment %}
+                                        {{ new.comment }}
+                                    {% endif %}
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                <div class="paginating">
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1"><i class="fa-solid fa-backward-fast"></i></a>
+                        <a href="?page={{ page_obj.previous_page_number }}"><i
+                                class="fa-solid fa-backward-step"></i></a>
+                    {% endif %}
+
+                    Страница {{ page_obj.number }} от {{ page_obj.paginator.num_pages }}.
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}"><i class="fa-solid fa-forward-step"></i></a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}"><i class="fa-solid fa-forward-last"></i></a>
+                    {% endif %}
+                </div>
+
+
+            {% else %}
+                <h1 class="no-news">
+                    Няма предложения.
+                </h1>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

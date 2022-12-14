@@ -1,0 +1,78 @@
+.profile-container{
+    margin: 40px auto;
+    padding: 20px 10px;
+    width: 40%;
+    height: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-container .header-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.profile-container .header-container .image-and-more{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.profile-container .header-container .image-and-more .more{
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+}
+
+.profile-container .header-container .profile-picture img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.profile-container .header-container .buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.profile-container .header-container .buttons a{
+    border: 1px solid #0bdcd8;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+.profile-container .header-container .buttons a.exit{
+    border-color: red;
+}
+
+.profile-container .header-container .buttons a.delete{
+    border-color: black;
+}
+
+.profile-container .header-container .buttons a:hover{
+    background: lightgrey;
+}
+
+
+@media screen and (max-width: 1250px){
+    .profile-container{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .profile-container{
+        width: 80%;
+    }
+}
+

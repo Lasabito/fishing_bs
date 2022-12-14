@@ -1,0 +1,78 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'styles/mains/area-forecast.css' %}">
+    <div class="content">
+        {% if area == 'koketrais' %}
+            <div class="header">
+                Прогноза за Кокетрайс
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/sveti_vlas?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'emine' %}
+            <div class="header">
+                Прогноза за Емине
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/sveti_vlas?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'elenite' %}
+            <div class="header">
+                Прогноза за Елените
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/sveti_vlas?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'megalkata' %}
+            <div class="header">
+                Прогноза за Мегалката
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/akrotirija?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'ravda' %}
+            <div class="header">
+                Прогноза за Равда
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/akrotirija?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'pomorie' %}
+            <div class="header">
+                Прогноза за Поморие
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/pomorie?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'stavrova-banka' %}
+            <div class="header">
+                Прогноза за Ставрова банка
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/pomorie?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'kanala' %}
+            <div class="header">
+                Прогноза за Канала
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/pomorie?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'atiya' %}
+            <div class="header">
+                Прогноза за Атия
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/atiya_sozopol?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'chukalyata' %}
+            <div class="header">
+                Прогноза за Чукалята
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/atiya_sozopol?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'talasakra' %}
+            <div class="header">
+                Прогноза за Таласакра
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/vromos?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'sozopol' %}
+            <div class="header">
+                Прогноза за Созопол
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/sozopol_old_town?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'duini' %}
+            <div class="header">
+                Прогноза за Дюни
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/sozopol_old_town?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% elif area == 'maslen-nos' %}
+            <div class="header">
+                Прогноза за Маслен нос
+            </div>
+            <script src="https://www.windfinder.com/widget/forecast/js/sozopol_old_town?unit_wave=m&unit_rain=mm&unit_temperature=c&unit_wind=kts&unit_pressure=hPa&days=4&show_day=0"></script>
+        {% endif %}
+    </div>
+{% endblock %}
