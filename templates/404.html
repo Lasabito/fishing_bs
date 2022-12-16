@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'styles/404.css' %}">
+    <div class="content">
+        <div class="gif">
+            <img src="{% static 'gifs/giphy.gif' %}" alt="404 gif">
+        </div>
+        <div class="text">
+            <h1>
+                Страницата не бе намерена...
+            </h1>
+        </div>
+        <div class="button">
+            <a href="{% url 'home' %}">Върни се към начало</a>
+        </div>
+    </div>`
+{% endblock %}

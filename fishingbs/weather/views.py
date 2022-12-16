@@ -30,5 +30,6 @@ def city_forecast_view(request):
     } if is_weather else {
         'form': form,
         'is_weather': is_weather,
+        'title': 'Прогноза на времето'
     }
     return render(request, 'weather/city-forecast.html', context)

@@ -7,6 +7,21 @@
     gap: 50px;
 }
 
+.content .header-top {
+    color: #092327;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.content .header-top::after {
+    content: "";
+    margin: 0 auto;
+    border-bottom: 3px solid #0bdcd8;
+    display: block;
+    height: 5px;
+    width: 110px;
+}
+
 .content .add-button {
     margin-top: 10px;
 }
@@ -36,7 +51,8 @@
 .content .news .new {
     border: 1px solid black;
     border-radius: 10px;
-    min-width: 40%;
+    min-width: 45%;
+    max-width: 45%;
 }
 
 .content .news .new .header {
@@ -105,7 +121,7 @@
 .content .news .new .information {
     padding: 10px;
     margin-top: 15px;
-    width: 100%;
+    max-width: 100%;
 }
 
 .content .news .new .information .different-from-photo {

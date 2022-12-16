@@ -10,7 +10,7 @@ UserModel = get_user_model()
 
 @admin.register(UserModel)
 class AppUserAdmin(auth_admin.UserAdmin):
-    list_display = ['email', 'last_login', 'is_superuser']
+    list_display = ['email', 'last_login', 'is_superuser', 'is_staff']
     list_filter = []
     ordering = ['email']
     add_form = SignUpForm

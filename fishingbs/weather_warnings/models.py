@@ -38,3 +38,4 @@ class WeatherWarningsModel(models.Model):
         blank=False,
         null=False,
     )
+

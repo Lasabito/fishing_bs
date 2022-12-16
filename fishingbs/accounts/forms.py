@@ -65,10 +65,6 @@ class LogInForm(auth_forms.AuthenticationForm):
 
 
 class ProfileUpdateForm(forms.ModelForm, ClearableFileInput):
-    clear_checkbox_label = "Изчисти"
-    initial_text = "В момента"
-    input_text = "Промени"
-
     class Meta:
         model = Profile
         exclude = ['user']
@@ -78,5 +74,5 @@ class ProfileUpdateForm(forms.ModelForm, ClearableFileInput):
             'last_name': 'Фамилия',
             'age': 'Години',
             'town': 'Град/село',
-            'profile_picture': 'Профилна снимка',
+            'profile_picture': 'Снимка',
         }

@@ -30,6 +30,9 @@ class AppUser(AbstractBaseUser, auth_models.PermissionsMixin):
 
     objects = AppUserManager()
 
+    def __str__(self):
+        return self.email
+
 
 class Profile(models.Model):
     FIRST_NAME_MAX_LENGTH = 25
@@ -80,6 +83,9 @@ class Profile(models.Model):
         primary_key=True,
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return self.username
 
     @property
     def get_full_name(self):

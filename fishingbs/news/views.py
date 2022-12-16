@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic as views
@@ -17,6 +19,7 @@ class FishInformationView(views.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context = get_filters_count(context, self.model.objects)
+        context['title'] = 'Новини'
         return context
 
     def get_queryset(self):
@@ -24,12 +27,13 @@ class FishInformationView(views.ListView):
         time = self.request.GET.get('time', None)
         fish_type = self.request.GET.get('fish_type', None)
         location = self.request.GET.get('location', None)
+        queryset = queryset.order_by('-created_on')
 
         if time:
-            if time == 'soonest':
-                queryset = queryset.order_by('-created_on')
-            else:
+            if time == 'latest':
                 queryset = queryset.order_by('created_on')
+            else:
+                pass
 
         if fish_type and location:
             queryset = queryset.filter(fish_type=fish_type)
@@ -41,10 +45,8 @@ class FishInformationView(views.ListView):
         return queryset
 
 
+@login_required
 def news_create_view(request):
-    user = request.user
-    if user.id is None:
-        return redirect('log in')
     if request.method == 'GET':
         form = GiveInformationForm(label_suffix='')
     else:
@@ -64,19 +66,42 @@ def news_create_view(request):
             return redirect('news')
 
     context = {
-        'form': form
+        'form': form,
+        'title': 'Добавяне на новина',
     }
     return render(request, 'news/create_news.html', context)
 
 
-class FishNewUpdate(views.UpdateView):
+class FishNewUpdate(LoginRequiredMixin, views.UpdateView):
     template_name = 'news/update-news.html'
     model = GiveInformationModel
     form_class = GiveInformationForm
     success_url = reverse_lazy('news')
+    extra_context = {
+        'title': 'Редактиране на новина',
+    }
+
+    def get(self, request, *args, **kwargs):
+        result = super().get(request, *args, **kwargs)
+        current_profile = Profile.objects.filter(pk=self.object.from_user_id).get()
+        if request.user == current_profile.user or request.user.is_staff:
+            return result
+        else:
+            return redirect('not the owner page')
 
 
-class FishNewsDelete(views.DeleteView):
+class FishNewsDelete(LoginRequiredMixin, views.DeleteView):
     model = GiveInformationModel
     template_name = 'news/delete-news.html'
     success_url = reverse_lazy('news')
+    extra_context = {
+        'title': 'Изтриване на новина',
+    }
+
+    def get(self, request, *args, **kwargs):
+        result = super().get(request, *args, **kwargs)
+        current_profile = Profile.objects.filter(pk=self.object.from_user_id).get()
+        if request.user == current_profile.user or request.user.is_staff:
+            return result
+        else:
+            return redirect('not the owner page')

@@ -14,9 +14,13 @@ def fishing_areas(request):
             return redirect('area forecast', area=area)
     context = {
         'form': form,
+        'title': 'Риболовни райони',
     }
     return render(request, 'locations/fishing-areas.html', context)
 
 
 class AreaForecast(views.TemplateView, LoginRequiredMixin):
     template_name = 'weather/area-forecast.html'
+    extra_context = {
+        'title': 'Прогноза за район',
+    }

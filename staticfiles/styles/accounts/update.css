@@ -51,7 +51,7 @@
 
 }
 
-.content .update-form .input-box label:not(#photo-clear_id) {
+.content .update-form .input-box label:not(#profile_picture-clear_id) {
     position: absolute;
     top: -20px;
     font-size: 13px;
@@ -60,11 +60,11 @@
     transition: .5s;
 }
 
-.content .update-form .input-box label#photo-clear_id {
+.content .update-form .input-box label#profile_picture-clear_id {
     top: -10px;
 }
 
-.content .update-form .input-box input:not(#photo-clear_id, #id_photo) {
+.content .update-form .input-box input:not(#profile_picture-clear_id, #id_photo) {
     border: none;
     border-bottom: 1px solid black;
     background: transparent;
@@ -73,7 +73,7 @@
     padding: 5px;
 }
 
-.content .update-form .input-box input#photo-clear_id {
+.content .update-form .input-box input#profile_picture-clear_id {
     width: 50px;
 }
 
