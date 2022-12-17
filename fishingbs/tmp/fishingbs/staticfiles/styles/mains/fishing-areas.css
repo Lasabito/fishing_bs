@@ -1,0 +1,158 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 50px;
+    gap: 20px;
+}
+
+.content .header {
+    padding: 20px 0;
+    color: #092327;
+}
+
+.content .header::after {
+    content: "";
+    margin: 0 auto;
+    border-bottom: 3px solid #0bdcd8;
+    display: block;
+    height: 5px;
+    width: 160px;
+}
+
+.content .explain{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+}
+
+.content .explain h4{
+    font-size: 20px;
+}
+
+.content .explain img{
+    width: 90%;
+    height: auto;
+}
+
+.content .location-form .location-label {
+    font-size: 1.5rem;
+    color: #092327;
+}
+
+.content .location-form .location-choices {
+    padding: 5px;
+    border: 1px solid #0E1116;
+    border-radius: 5px;
+    width: 150px;
+    margin: 0 15px 0 5px;
+    color: #092327;
+}
+
+.content .location-form button {
+    padding: 5px 10px;
+    border: 1px solid #00B1CC;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.content .location-form button:hover {
+    background: #e6ebf1;
+}
+
+.content .choose-from-photos .section-header{
+    font-size: 1.55rem;
+    text-align: left;
+}
+
+.content .choose-from-photos .image-and-legend{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.content .choose-from-photos .image-and-legend .legend{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.content .choose-from-photos .image-and-legend .legend .red i{
+    color: red;
+}
+
+.content .choose-from-photos .image-and-legend .legend .blue i{
+    color: #388cff;
+}
+
+.content .choose-from-photos .image-and-legend .legend .green i{
+    color: green;
+}
+
+.content .choose-from-photos .image-and-legend .legend .light-blue i{
+    color: lightblue;
+}
+
+.content .choose-from-photos .image-and-legend .legend .pink i{
+    color: pink;
+}
+
+.content .choose-from-photos .image-and-legend .legend .yellow i{
+    color: #efd732;
+}
+
+.content .choose-from-photos .image-and-legend .legend .grey i{
+    color: #afaeae;
+}
+
+.content .choose-from-photos .image-and-legend .legend .black i{
+    color: black;
+}
+
+.content .choose-from-photos .image-and-legend .legend .orange i{
+    color: orange;
+}
+
+.content .choose-from-photos .image-and-legend .legend .purple i{
+    color: #cb27cb;
+}
+
+.content .choose-from-photos .image-and-legend .legend .light-purple i{
+    color: #dcc8ff;
+}
+
+.content .choose-from-photos .image-and-legend .legend .dark-red i{
+    color: darkred;
+}
+
+.content .choose-from-photos .image-and-legend .legend .dark-orange i{
+    color: #bb6e18;
+}
+
+.content .choose-from-photos .image-and-legend .legend .lime i{
+    color: #8dff00;
+}
+
+.content .search{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin-top: 70px;
+    padding: 0 30px;
+}
+
+@media (max-width: 950px) {
+    .content{
+        margin-bottom: 150px;
+    }
+
+    .choose-from-photos{
+        display: none;
+    }
+}

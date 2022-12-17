@@ -1,0 +1,92 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 100px;
+}
+
+.content .header {
+    padding: 20px 0 50px;
+    color: #092327;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.content .header::after {
+    content: "";
+    margin: 0 auto;
+    border-bottom: 3px solid #0bdcd8;
+    display: block;
+    height: 5px;
+    width: 110px;
+}
+
+.content .update-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 13px 0;
+    border: 1px solid black;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.content .update-form .input-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.content .update-form .input-box.with-photo {
+    display: flex;
+    flex-direction: column;
+}
+
+.content .update-form .input-box.with-photo .photo{
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+
+}
+
+.content .update-form .input-box label:not(#profile_picture-clear_id) {
+    position: absolute;
+    top: -20px;
+    font-size: 13px;
+    left: 0;
+    padding: 0 5px 5px;
+    transition: .5s;
+}
+
+.content .update-form .input-box label#profile_picture-clear_id {
+    top: -10px;
+}
+
+.content .update-form .input-box input:not(#profile_picture-clear_id, #id_photo) {
+    border: none;
+    border-bottom: 1px solid black;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    padding: 5px;
+}
+
+.content .update-form .input-box input#profile_picture-clear_id {
+    width: 50px;
+}
+
+.content .update-form button {
+    padding: 5px 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.content .update-form button:hover {
+    background: #e6ebf1;
+}
