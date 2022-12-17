@@ -1,0 +1,95 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0 100px;
+}
+
+.content .header {
+    padding: 20px 0 50px;
+    color: #092327;
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.content .header::after {
+    content: "";
+    margin: 0 auto;
+    border-bottom: 3px solid #0bdcd8;
+    display: block;
+    height: 5px;
+    width: 110px;
+}
+
+.content .update-news-form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 13px 0;
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.content .update-news-form .input-box{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0;
+    gap: 5px;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.content .update-news-form .input-box.with-photo{
+    gap: 15px;
+}
+
+.content .update-news-form .input-box input#photo-clear_id{
+    width: 50px;
+}
+
+.content .update-news-form .input-box .photo{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.content .update-news-form label {
+    font-size: 1rem;
+    color: #092327;
+}
+
+.content .update-news-form input,
+.content .update-news-form textarea,
+.content .update-news-form select{
+    padding: 5px;
+    border: 1px solid #0E1116;
+    border-radius: 5px;
+    width: 150px;
+    margin: 0 15px 0 5px;
+    color: #092327;
+}
+
+.content .update-news-form textarea{
+    width: 230px;
+    height: 130px;
+}
+
+
+.content .update-news-form button {
+    padding: 5px 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.content .update-news-form button:hover {
+    background: #e6ebf1;
+}
